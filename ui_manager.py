@@ -18,7 +18,7 @@ class CoffeeInfoDialog(QDialog):
         self.update = update
         self.current_id = id
 
-        uic.loadUi("coffee_card.ui", self)
+        uic.loadUi("addEditCoffeeForm.ui", self)
         if update:
             self.init_ui(id, grade, roast, consistence, taste, cost, volume)
         self.pushButton.clicked.connect(lambda: self.save())
