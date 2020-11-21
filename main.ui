@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Обзорщик кофе</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -69,6 +69,13 @@
           <string>Объем упаковки</string>
          </property>
         </column>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="add_coffee_btn">
+        <property name="text">
+         <string>Добавить кофе</string>
+        </property>
        </widget>
       </item>
      </layout>

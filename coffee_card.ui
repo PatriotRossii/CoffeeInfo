@@ -26,11 +26,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="id">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="id"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_2">
@@ -57,11 +53,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="grade">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="grade"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_3">
@@ -88,11 +80,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="roast">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="roast"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_4">
@@ -119,11 +107,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="consistence">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="consistence"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_5">
@@ -150,11 +134,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="taste">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="taste"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_6">
@@ -181,11 +161,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="cost">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="cost"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_7">
@@ -212,11 +188,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="volume">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="volume"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_8">
@@ -251,7 +223,7 @@
        <item>
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>Спасибо</string>
+          <string>Сохранить</string>
          </property>
         </widget>
        </item>
