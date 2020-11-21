@@ -41,3 +41,13 @@ class CoffeeInfoManager:
     def get_coffees_info(self):
         coffees = self.cur.execute("SELECT * FROM coffees").fetchall()
         return [CoffeeInfo(*e) for e in coffees]
+
+    def update(self, id, new_id, grade, roast, consistence, taste, cost, volume):
+        self.cur.execute("UPDATE coffees SET id=?, grade=?, roast=?, consistence=?, taste=?, cost=?, volume=?"
+                         " WHERE id={}".format(id), [new_id, grade, roast, consistence, taste, cost, volume])
+        self.conn.commit()
+
+    def insert(self, id, grade, roast, consistence, taste, cost, volume):
+        self.cur.execute("INSERT INTO coffees(id, grade, roast, consistence, taste, cost, volume) VALUES("
+                         "?,?,?,?,?,?,?)", [id, grade, roast, consistence, taste, cost, volume])
+        self.conn.commit()
