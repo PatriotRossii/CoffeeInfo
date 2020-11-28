@@ -45,10 +45,13 @@ class CoffeeInfoDialog(QDialog):
 
     def save(self):
         values = self.get_values()
+        error_message = QErrorMessage(self)
         if self.update:
-            self.manager.update(self.current_id, *self.get_values())
+            try:
+                self.manager.update(self.current_id, *self.get_values())
+            except Exception:
+                return error_message.showMessage("ID must be unique")
         else:
-            error_message = QErrorMessage(self)
             if not values[0]:
                 return error_message.showMessage("ID must not be empty")
             try:
