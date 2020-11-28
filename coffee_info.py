@@ -34,7 +34,7 @@ class CoffeeInfo:
 
 
 class CoffeeInfoManager:
-    def __init__(self, filename="coffee.sqlite"):
+    def __init__(self, filename="data/coffee.sqlite"):
         self.conn = sqlite3.connect(filename)
         self.cur = self.conn.cursor()
 

@@ -2,6 +2,9 @@ from PyQt5.QtCore import Qt
 
 from coffee_info import CoffeeInfo, CoffeeInfoManager
 
+from UI.ui_main import Ui_MainWindow
+from UI.ui_addEditCoffeeForm import Ui_Dialog
+
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QDialog, QTableWidgetItem, QErrorMessage
 
@@ -18,23 +21,27 @@ class CoffeeInfoDialog(QDialog):
         self.update = update
         self.current_id = id
 
-        uic.loadUi("addEditCoffeeForm.ui", self)
+        self.dialog = Ui_Dialog()
+        self.dialog.setupUi(self)
+
         if update:
             self.init_ui(id, grade, roast, consistence, taste, cost, volume)
-        self.pushButton.clicked.connect(lambda: self.save())
+        self.dialog.pushButton.clicked.connect(lambda: self.save())
 
     def init_ui(self, id, grade, roast, consistence, taste, cost, volume):
-        self.id.setText(id)
-        self.grade.setText(grade)
-        self.roast.setText(roast)
-        self.consistence.setText(consistence)
-        self.taste.setText(taste)
-        self.cost.setText(cost)
-        self.volume.setText(volume)
+        self.dialog.id.setText(id)
+        self.dialog.grade.setText(grade)
+        self.dialog.roast.setText(roast)
+        self.dialog.consistence.setText(consistence)
+        self.dialog.taste.setText(taste)
+        self.dialog.cost.setText(cost)
+        self.dialog.volume.setText(volume)
 
     def get_values(self):
-        return [self.id.text(), self.grade.text(), self.roast.text(), self.consistence.text(),
-                self.taste.text(), self.cost.text(), self.volume.text()]
+        return [self.dialog.id.text(), self.dialog.grade.text(),
+                self.dialog.roast.text(), self.dialog.consistence.text(),
+                self.dialog.taste.text(), self.dialog.cost.text(),
+                self.dialog.volume.text()]
 
     def save(self):
         values = self.get_values()
@@ -60,29 +67,31 @@ class MainWindow(QMainWindow):
         self.manager = CoffeeInfoManager()
         self.currency = currency
 
-        uic.loadUi('main.ui', self)
+        self.main_window = Ui_MainWindow()
+        self.main_window.setupUi(self)
+
         self.init_ui()
 
-        self.tableWidget.cellDoubleClicked.connect(self.open_card)
-        self.add_coffee_btn.clicked.connect(self.add_coffee)
+        self.main_window.tableWidget.cellDoubleClicked.connect(self.open_card)
+        self.main_window.add_coffee_btn.clicked.connect(self.add_coffee)
 
     def init_ui(self):
         coffees = self.manager.get_coffees_info()
 
-        self.tableWidget.setRowCount(len(coffees))
-        self.tableWidget.setColumnCount(7)
+        self.main_window.tableWidget.setRowCount(len(coffees))
+        self.main_window.tableWidget.setColumnCount(7)
 
         for idx, e in enumerate(coffees):
-            self.tableWidget.setItem(idx, 0, QTableWidgetItem(str(e.get_id())))
-            self.tableWidget.setItem(idx, 1, QTableWidgetItem(e.get_grade()))
-            self.tableWidget.setItem(idx, 2, QTableWidgetItem(e.get_roast()))
-            self.tableWidget.setItem(idx, 3, QTableWidgetItem(e.get_consistence()))
-            self.tableWidget.setItem(idx, 4, QTableWidgetItem(e.get_taste()))
-            self.tableWidget.setItem(idx, 5, QTableWidgetItem(str(e.get_cost())))
-            self.tableWidget.setItem(idx, 6, QTableWidgetItem(str(e.get_volume())))
+            self.main_window.tableWidget.setItem(idx, 0, QTableWidgetItem(str(e.get_id())))
+            self.main_window.tableWidget.setItem(idx, 1, QTableWidgetItem(e.get_grade()))
+            self.main_window.tableWidget.setItem(idx, 2, QTableWidgetItem(e.get_roast()))
+            self.main_window.tableWidget.setItem(idx, 3, QTableWidgetItem(e.get_consistence()))
+            self.main_window.tableWidget.setItem(idx, 4, QTableWidgetItem(e.get_taste()))
+            self.main_window.tableWidget.setItem(idx, 5, QTableWidgetItem(str(e.get_cost())))
+            self.main_window.tableWidget.setItem(idx, 6, QTableWidgetItem(str(e.get_volume())))
 
     def open_card(self, row, column):
-        data = [self.tableWidget.item(row, i).text() for i in range(7)]
+        data = [self.main_window.tableWidget.item(row, i).text() for i in range(7)]
 
         dialog = CoffeeInfoDialog(*data, parent=self)
         dialog.show()
